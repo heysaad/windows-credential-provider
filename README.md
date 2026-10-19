@@ -2,13 +2,13 @@
 
 # Windows Credential Provider
 
-This fork publishes **HeySaad.Windows.CredentialProvider** to NuGet.org. It includes
+This fork publishes **Lithnet.CredentialProvider.V2** to NuGet.org. It includes
 the public `CredentialTile3` and PNG buffers that preserve bitmap transparency.
 Assembly names and namespaces remain `Lithnet.CredentialProvider`; install only
 one of the fork and upstream packages in a consuming project.
 
 ```powershell
-dotnet add package HeySaad.Windows.CredentialProvider --version 1.2.0-preview.1
+dotnet add package Lithnet.CredentialProvider.V2 --version 1.2.0-preview.1
 ```
 
 GitHub Actions builds, tests Windows x64, and produces the package on pushes and
@@ -25,7 +25,7 @@ NuGet.org, open your account's **Trusted Publishing** page and add a policy with
 | Workflow file | `publish-nuget.yml` (filename only) |
 | Environment | Leave empty |
 | Scope | Push new packages and package versions |
-| Package glob | `HeySaad.Windows.CredentialProvider` |
+| Package glob | `Lithnet.CredentialProvider.V2` |
 
 Run **Build and publish NuGet** on `main` with **publish** enabled. The publishing
 job downloads the tested package and exchanges its GitHub OIDC token for a
