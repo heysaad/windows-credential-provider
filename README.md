@@ -12,11 +12,26 @@ dotnet add package HeySaad.Windows.CredentialProvider --version 1.2.0-preview.1
 ```
 
 GitHub Actions builds, tests Windows x64, and produces the package on pushes and
-pull requests. To publish, add a NuGet.org API key scoped to this package as the
-repository secret `NUGET_API_KEY`, then run **Build and publish NuGet** on `main`
-with **publish** enabled. Bump the project version before publishing another
-release. This fork is based on Lithnet's MIT-licensed implementation and is not an
-official Lithnet release.
+pull requests. Publishing uses [NuGet trusted publishing](https://learn.microsoft.com/nuget/nuget-org/trusted-publishing)
+with short-lived credentials issued to the publishing job.
+
+Set the repository Actions variable `NUGET_USER` to your NuGet.org username. In
+NuGet.org, open your account's **Trusted Publishing** page and add a policy with:
+
+| Field | Value |
+| --- | --- |
+| Repository owner | `heysaad` |
+| Repository | `windows-credential-provider` |
+| Workflow file | `publish-nuget.yml` (filename only) |
+| Environment | Leave empty |
+| Scope | Push new packages and package versions |
+| Package glob | `HeySaad.Windows.CredentialProvider` |
+
+Run **Build and publish NuGet** on `main` with **publish** enabled. The publishing
+job downloads the tested package and exchanges its GitHub OIDC token for a
+temporary NuGet API key; no API-key repository secret is required. Bump the
+project version before publishing another release. This fork is based on
+Lithnet's MIT-licensed implementation and is not an official Lithnet release.
 ![](https://img.shields.io/nuget/vpre/lithnet.credentialprovider?label=Current%20prerelease)![](https://img.shields.io/nuget/v/Lithnet.CredentialProvider?label=Current%20release)
 ![](https://img.shields.io/nuget/dt/lithnet.credentialprovider)
 
