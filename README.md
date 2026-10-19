@@ -1,6 +1,22 @@
 ![](https://github.com/lithnet/miis-powershell/wiki/images/logo-ex-small.png)
 
 # Windows Credential Provider
+
+This fork publishes **HeySaad.Windows.CredentialProvider** to NuGet.org. It includes
+the public `CredentialTile3` and PNG buffers that preserve bitmap transparency.
+Assembly names and namespaces remain `Lithnet.CredentialProvider`; install only
+one of the fork and upstream packages in a consuming project.
+
+```powershell
+dotnet add package HeySaad.Windows.CredentialProvider --version 1.2.0-preview.1
+```
+
+GitHub Actions builds, tests Windows x64, and produces the package on pushes and
+pull requests. To publish, add a NuGet.org API key scoped to this package as the
+repository secret `NUGET_API_KEY`, then run **Build and publish NuGet** on `main`
+with **publish** enabled. Bump the project version before publishing another
+release. This fork is based on Lithnet's MIT-licensed implementation and is not an
+official Lithnet release.
 ![](https://img.shields.io/nuget/vpre/lithnet.credentialprovider?label=Current%20prerelease)![](https://img.shields.io/nuget/v/Lithnet.CredentialProvider?label=Current%20release)
 ![](https://img.shields.io/nuget/dt/lithnet.credentialprovider)
 
